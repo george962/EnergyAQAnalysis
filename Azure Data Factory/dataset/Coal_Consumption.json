@@ -1,0 +1,67 @@
+{
+	"name": "Coal_Consumption",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Silver_Coal_Consumption",
+				"folderPath": "Silver",
+				"fileSystem": "team1blob"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "period",
+				"type": "UTF8"
+			},
+			{
+				"name": "duoarea",
+				"type": "UTF8"
+			},
+			{
+				"name": "area-name",
+				"type": "UTF8"
+			},
+			{
+				"name": "product",
+				"type": "UTF8"
+			},
+			{
+				"name": "product-name",
+				"type": "UTF8"
+			},
+			{
+				"name": "process",
+				"type": "UTF8"
+			},
+			{
+				"name": "process-name",
+				"type": "UTF8"
+			},
+			{
+				"name": "series",
+				"type": "UTF8"
+			},
+			{
+				"name": "series-description",
+				"type": "UTF8"
+			},
+			{
+				"name": "value",
+				"type": "UTF8"
+			},
+			{
+				"name": "units",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

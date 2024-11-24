@@ -1,0 +1,88 @@
+{
+	"name": "Natural Gas",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "NaturalGas_Sink_Json",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Parquet1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "flatten1"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          response as (total as string, dateFormat as string, frequency as string, data as (period as string, duoarea as string, {area-name} as string, product as string, {product-name} as string, process as string, {process-name} as string, series as string, {series-description} as string, value as string, units as string)[]),",
+				"          request as (command as string, params as (frequency as string, data as string[], facets as (duoarea as string[]), start as string, end as string, offset as string, length as string, api_key as string)),",
+				"          apiVersion as string,",
+				"          ExcelAddInVersion as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> source1",
+				"source1 foldDown(unroll(response.data),",
+				"     mapColumn(",
+				"          total = response.total,",
+				"          dateFormat = response.dateFormat,",
+				"          frequency = response.frequency,",
+				"          period = response.data.period,",
+				"          duoarea = response.data.duoarea,",
+				"          {area-name} = response.data.{area-name},",
+				"          product = response.data.product,",
+				"          {product-name} = response.data.{product-name},",
+				"          process = response.data.process,",
+				"          {process-name} = response.data.{process-name},",
+				"          series = response.data.series,",
+				"          {series-description} = response.data.{series-description},",
+				"          value = response.data.value,",
+				"          units = response.data.units",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"flatten1 select(mapColumn(",
+				"          period,",
+				"          duoarea,",
+				"          {area-name},",
+				"          product,",
+				"          {product-name},",
+				"          process,",
+				"          {process-name},",
+				"          series,",
+				"          {series-description},",
+				"          value,",
+				"          units",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

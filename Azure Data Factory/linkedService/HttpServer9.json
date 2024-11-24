@@ -1,0 +1,13 @@
+{
+	"name": "HttpServer9",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://api.eia.gov/v2/electricity/rto/daily-fuel-type-data/data/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

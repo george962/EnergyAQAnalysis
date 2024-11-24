@@ -1,0 +1,151 @@
+{
+	"name": "Natural_Gas_Generation_Sink_LA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Natural_Gas_Generation_LA.json",
+				"folderPath": "Bronze",
+				"fileSystem": "team1blob"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"response": {
+					"type": "object",
+					"properties": {
+						"total": {
+							"type": "string"
+						},
+						"dateFormat": {
+							"type": "string"
+						},
+						"frequency": {
+							"type": "string"
+						},
+						"data": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"period": {
+										"type": "string"
+									},
+									"respondent": {
+										"type": "string"
+									},
+									"respondent-name": {
+										"type": "string"
+									},
+									"fueltype": {
+										"type": "string"
+									},
+									"type-name": {
+										"type": "string"
+									},
+									"timezone": {
+										"type": "string"
+									},
+									"timezone-description": {
+										"type": "string"
+									},
+									"value": {
+										"type": "string"
+									},
+									"value-units": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"description": {
+							"type": "string"
+						}
+					}
+				},
+				"request": {
+					"type": "object",
+					"properties": {
+						"command": {
+							"type": "string"
+						},
+						"params": {
+							"type": "object",
+							"properties": {
+								"frequency": {
+									"type": "string"
+								},
+								"data": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"facets": {
+									"type": "object",
+									"properties": {
+										"timezone": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"respondent": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"fueltype": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"sort": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"column": {
+												"type": "string"
+											},
+											"direction": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"offset": {
+									"type": "string"
+								},
+								"length": {
+									"type": "string"
+								},
+								"api_key": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"apiVersion": {
+					"type": "string"
+				},
+				"ExcelAddInVersion": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

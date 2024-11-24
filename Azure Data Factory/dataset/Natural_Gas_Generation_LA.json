@@ -1,0 +1,19 @@
+{
+	"name": "Natural_Gas_Generation_LA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer9",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "?frequency=daily&data[0]=value&facets[timezone][]=Pacific&facets[respondent][]=LDWP&facets[fueltype][]=NG&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000&api_key=t1HQdoP1K8ZnGrdNotLrpABrVpvtLcxTJmo8HQ1V"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
