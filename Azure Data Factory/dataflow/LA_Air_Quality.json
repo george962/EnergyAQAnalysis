@@ -65,7 +65,7 @@
 				"     skipDuplicateMapInputs: false,",
 				"     skipDuplicateMapOutputs: false) ~> flatten1",
 				"flatten1 derive(corrected_timestamp = iif(length(toString({timestamp})) == 10, toInteger({timestamp}), toInteger(null())),",
-				"          location = 'Los Angeles') ~> derivedColumn1",
+				"          location = 'Los_Angeles') ~> derivedColumn1",
 				"derivedColumn1 filter(!isNull({aqi}) && !isNull(corrected_timestamp)) ~> filter1",
 				"filter1 derive(corrected_timestamp = toTimestamp(toLong(corrected_timestamp) * 1000),",
 				"          id = concat(location, '_', toString(corrected_timestamp)),",
