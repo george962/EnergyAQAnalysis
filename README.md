@@ -1,6 +1,6 @@
 # EnergyAQAnalysis
 
-This repository contains the workflow, analysis, and visualizations for the project **"Energy and Air Quality Analysis"**, focusing on the relationship between energy generation sources and their impact on air quality in the regions of **Los Angeles** and **New England**.
+This repository contains the workflow, analysis, and visualizations for the project **"Energy and Air Quality Analysis"**, focusing on the relationship between energy generation sources and their impact on air quality in the regions of **Los Angeles** and **New England** for CDS DS 591 Fall 2024, at Boston University.
 
 ## Overview
 
