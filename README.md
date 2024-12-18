@@ -8,7 +8,7 @@ The project utilizes historical and real-time data streams to analyze patterns, 
 
 ## Data Sources
 
-Energy generation data was sourced from the [U.S. Energy Information Administration (EIA)](https://www.eia.gov) via their official platform. Specifically, we utilized the **“hourly generation by energy source”** dataset, filtered by coal and natural gas, to align with daily air quality data integration from [OpenWeather](https://openweathermap.org/history).
+Historical energy generation data was sourced from the [U.S. Energy Information Administration (EIA)](https://www.eia.gov) via their official platform. Specifically, we utilized the **“hourly generation by energy source”** dataset, filtered by natural gas and coal, to align with daily air quality data integration from [OpenWeather](https://openweathermap.org/history).
 
 For real-time streaming data, [ISO New England](https://webservices.iso-ne.com/docs/v1.1/) provided real-time data on natural gas and coal energy generation and [Ambee](https://www.getambee.com/api/air-quality) supplied real-time air quality information.
 
