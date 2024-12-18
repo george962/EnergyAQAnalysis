@@ -24,13 +24,10 @@ Our focus areas for analysis were **Boston** and **Los Angeles**, chosen for the
   - `integrationRuntime/`: Runtime environment for data integration.
   - `linkedService/`: Connection strings and service links.
   - `pipeline/`: Data processing pipelines.
-
 - `EDA/`
   - Contains the exploratory data analysis (EDA) notebooks and scripts.
-
 - `Power BI/`
   - Power BI files and related resources for data visualization and reporting.
-
 - `Training Models/`
   - Contains Python files used for training machine learning models and their associated results.
 
