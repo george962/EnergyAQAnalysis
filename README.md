@@ -16,23 +16,24 @@ Our focus areas for analysis were **Boston** and **Los Angeles**, chosen for the
 
 ## Repository Structure
 
-- `'Azure Data Factory'`
-  - `'credential/'`: Credentials required for accessing different services.
-  - `'dataflow/'`: Dataflow definitions for data transformation.
-  - `'dataset/'`: Definitions of datasets used in the data factory.
-  - `'factory/'`: Configuration files for the Azure Data Factory instance.
-  - `'integrationRuntime/'`: Runtime environment for data integration.
-  - `'linkedService/'`: Connection strings and service links.
-  - `'pipeline/'`: Data processing pipelines.
+- `Azure Data Factory`
+  - `credential/`: Credentials required for accessing different services.
+  - `dataflow/`: Dataflow definitions for data transformation.
+  - `dataset/`: Definitions of datasets used in the data factory.
+  - `factory/`: Configuration files for the Azure Data Factory instance.
+  - `integrationRuntime/`: Runtime environment for data integration.
+  - `linkedService/`: Connection strings and service links.
+  - `pipeline/`: Data processing pipelines.
 
-- `'EDA/'`
+- `EDA/`
   - Contains the exploratory data analysis (EDA) notebooks and scripts.
 
-- `'Power BI/'`
+- `Power BI/`
   - Power BI files and related resources for data visualization and reporting.
 
-- `'Training Models/'`
+- `Training Models/`
   - Contains Python files used for training machine learning models and their associated results.
+
 
 ## Tools and Technologies
 
