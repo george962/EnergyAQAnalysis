@@ -16,18 +16,18 @@ Our focus areas for analysis were **Boston** and **Los Angeles**, chosen for the
 
 ## Repository Structure
 
-- `Azure Data Factory`
-  - `credential/`: Credentials required for accessing different services.
-  - `dataflow/`: Dataflow definitions for data transformation.
-  - `dataset/`: Definitions of datasets used in the data factory.
-  - `factory/`: Configuration files for the Azure Data Factory instance.
-  - `integrationRuntime/`: Runtime environment for data integration.
-  - `linkedService/`: Connection strings and service links.
-  - `pipeline/`: Data processing pipelines.
+- `Arm Templates/`
+  - Contains ARM templates for infrastructure as code.
+- `Data Architecture/`
+  - Includes architecture diagrams and related documentation.
 - `EDA/`
   - Contains the exploratory data analysis (EDA) notebooks and scripts.
 - `Power BI/`
   - Power BI files and related resources for data visualization and reporting.
+- `Presentation and Paper/`
+  - Contains slides, notes, and materials used for project presentations and technical paper.
+- `Stream/`
+  - Contains configurations and scripts for handling real-time data streaming.
 - `Training Models/`
   - Contains Python files used for training machine learning models and their associated results.
 
