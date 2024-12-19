@@ -1,0 +1,19 @@
+{
+	"name": "EIA_Json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "?frequency=quarterly&data[0]=quantity&facets[customsDistrictId][]=BO_MA&facets[customsDistrictId][]=LA_CA&start=2003-Q1&end=2023-Q4&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000&api_key=t1HQdoP1K8ZnGrdNotLrpABrVpvtLcxTJmo8HQ1V"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

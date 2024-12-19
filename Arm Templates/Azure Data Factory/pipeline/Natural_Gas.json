@@ -1,0 +1,82 @@
+{
+	"name": "Natural_Gas",
+	"properties": {
+		"activities": [
+			{
+				"name": "EIA",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://api.eia.gov/v2/natural-gas/cons/sum/data/?api_key=t1HQdoP1K8ZnGrdNotLrpABrVpvtLcxTJmo8HQ1V"
+				}
+			},
+			{
+				"name": "Natural_Gas_Consumption",
+				"description": "Monthly",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "EIA",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "NaturalGas_Source_Json",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "NaturalGas_Sink_Json",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-11-20T03:56:06Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

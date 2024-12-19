@@ -1,0 +1,19 @@
+{
+	"name": "Coal_Generation_New_England",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer8",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "?frequency=daily&data[0]=value&facets[timezone][]=Eastern&facets[respondent][]=ISNE&facets[fueltype][]=COL&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000&api_key=t1HQdoP1K8ZnGrdNotLrpABrVpvtLcxTJmo8HQ1V"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

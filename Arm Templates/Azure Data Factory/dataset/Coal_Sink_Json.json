@@ -1,0 +1,128 @@
+{
+	"name": "Coal_Sink_Json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Consumption_EIA",
+				"folderPath": "Bronze",
+				"fileSystem": "team1blob"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"response": {
+					"type": "object",
+					"properties": {
+						"total": {
+							"type": "string"
+						},
+						"dateFormat": {
+							"type": "string"
+						},
+						"frequency": {
+							"type": "string"
+						},
+						"data": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"period": {
+										"type": "string"
+									},
+									"location": {
+										"type": "string"
+									},
+									"stateDescription": {
+										"type": "string"
+									},
+									"sector": {
+										"type": "string"
+									},
+									"sectorDescription": {
+										"type": "string"
+									},
+									"consumption": {
+										"type": "string"
+									},
+									"consumption-units": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"description": {
+							"type": "string"
+						}
+					}
+				},
+				"request": {
+					"type": "object",
+					"properties": {
+						"command": {
+							"type": "string"
+						},
+						"params": {
+							"type": "object",
+							"properties": {
+								"frequency": {
+									"type": "string"
+								},
+								"data": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"start": {
+									"type": "string"
+								},
+								"end": {
+									"type": "string"
+								},
+								"sort": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"column": {
+												"type": "string"
+											},
+											"direction": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"offset": {
+									"type": "string"
+								},
+								"length": {
+									"type": "string"
+								},
+								"api_key": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"apiVersion": {
+					"type": "string"
+				},
+				"ExcelAddInVersion": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

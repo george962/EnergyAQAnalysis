@@ -1,0 +1,134 @@
+{
+	"name": "NaturalGas_Sink_Json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Natural_Gas_Consumption.json",
+				"folderPath": "Bronze",
+				"fileSystem": "team1blob"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"response": {
+					"type": "object",
+					"properties": {
+						"total": {
+							"type": "string"
+						},
+						"dateFormat": {
+							"type": "string"
+						},
+						"frequency": {
+							"type": "string"
+						},
+						"data": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"period": {
+										"type": "string"
+									},
+									"duoarea": {
+										"type": "string"
+									},
+									"area-name": {
+										"type": "string"
+									},
+									"product": {
+										"type": "string"
+									},
+									"product-name": {
+										"type": "string"
+									},
+									"process": {
+										"type": "string"
+									},
+									"process-name": {
+										"type": "string"
+									},
+									"series": {
+										"type": "string"
+									},
+									"series-description": {
+										"type": "string"
+									},
+									"value": {
+										"type": "string"
+									},
+									"units": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"request": {
+					"type": "object",
+					"properties": {
+						"command": {
+							"type": "string"
+						},
+						"params": {
+							"type": "object",
+							"properties": {
+								"frequency": {
+									"type": "string"
+								},
+								"data": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"facets": {
+									"type": "object",
+									"properties": {
+										"duoarea": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"start": {
+									"type": "string"
+								},
+								"end": {
+									"type": "string"
+								},
+								"offset": {
+									"type": "string"
+								},
+								"length": {
+									"type": "string"
+								},
+								"api_key": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"apiVersion": {
+					"type": "string"
+				},
+				"ExcelAddInVersion": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

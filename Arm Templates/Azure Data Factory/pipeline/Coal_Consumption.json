@@ -1,0 +1,83 @@
+{
+	"name": "Coal_Consumption",
+	"properties": {
+		"activities": [
+			{
+				"name": "EIA",
+				"description": "",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://api.eia.gov/v2/coal/consumption-and-quality/data/?api_key=t1HQdoP1K8ZnGrdNotLrpABrVpvtLcxTJmo8HQ1V"
+				}
+			},
+			{
+				"name": "Coal_Consumption",
+				"description": "Quarterly",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "EIA",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Coal_Source_Json",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Coal_Sink_Json",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-11-20T04:21:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

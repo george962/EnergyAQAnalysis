@@ -1,0 +1,100 @@
+{
+	"name": "Natural_Gas_Generation_New_England",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Natural_Gas_Generation_Sink_New_England",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Natural_Gas_New_England",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "flatten1"
+				},
+				{
+					"name": "filter1"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          response as (total as string, dateFormat as string, frequency as string, data as (period as string, respondent as string, {respondent-name} as string, fueltype as string, {type-name} as string, timezone as string, {timezone-description} as string, value as string, {value-units} as string)[], description as string),",
+				"          request as (command as string, params as (frequency as string, data as string[], facets as (timezone as string[], respondent as string[], fueltype as string[]), sort as (column as string, direction as string)[], offset as string, length as string, api_key as string)),",
+				"          apiVersion as string,",
+				"          ExcelAddInVersion as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> source1",
+				"source1 foldDown(unroll(response.data),",
+				"     mapColumn(",
+				"          total = response.total,",
+				"          dateFormat = response.dateFormat,",
+				"          frequency = response.frequency,",
+				"          period = response.data.period,",
+				"          respondent = response.data.respondent,",
+				"          {respondent-name} = response.data.{respondent-name},",
+				"          fueltype = response.data.fueltype,",
+				"          {type-name} = response.data.{type-name},",
+				"          timezone = response.data.timezone,",
+				"          {timezone-description} = response.data.{timezone-description},",
+				"          value = response.data.value,",
+				"          {value-units} = response.data.{value-units},",
+				"          description = response.description",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"flatten1 filter(and(not(isNull(value)), not(equals(value, '0')))) ~> filter1",
+				"filter1 select(mapColumn(",
+				"          period,",
+				"          respondent,",
+				"          {respondent-name},",
+				"          {type-name},",
+				"          timezone,",
+				"          value,",
+				"          {value-units}",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          period as string,",
+				"          duoarea as string,",
+				"          {area-name} as string,",
+				"          product as string,",
+				"          {product-name} as string,",
+				"          process as string,",
+				"          {process-name} as string,",
+				"          series as string,",
+				"          {series-description} as string,",
+				"          value as string,",
+				"          units as string",
+				"     ),",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
