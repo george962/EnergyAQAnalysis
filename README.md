@@ -1,6 +1,6 @@
 # EnergyAQAnalysis
 
-This repository contains the workflow, analysis, and visualizations for the project "Energy and Air Quality Analysis" for CDS DS 591 Fall 2024, at Boston University.
+This repository contains the workflow, analysis, and visualizations for the project "Energy and Air Quality Analysis" for CDS DS 598 Fall 2024, at Boston University.
 
 ## Overview
 
