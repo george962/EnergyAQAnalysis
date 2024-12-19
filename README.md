@@ -1,10 +1,10 @@
 # EnergyAQAnalysis
 
-This repository contains the workflow, analysis, and visualizations for the project **"Energy and Air Quality Analysis"**, focusing on the relationship between energy generation sources and their impact on air quality in the regions of **Los Angeles** and **New England** for CDS DS 591 Fall 2024, at Boston University.
+This repository contains the workflow, analysis, and visualizations for the project "Energy and Air Quality Analysis" for CDS DS 591 Fall 2024, at Boston University.
 
 ## Overview
 
-The project utilizes historical and real-time data streams to analyze patterns, predict trends, and provide actionable insights into the impact of energy consumption on air quality. The repository includes workflows for data ingestion, exploratory data analysis (EDA), predictive modeling, visualization dashboards, and our paper.
+The project utilizes historical and real-time data streams to analyze patterns, predict trends, and provide actionable insights into the impact of energy consumption on air quality in the regions of Los Angeles and New England. The repository includes workflows for data ingestion, exploratory data analysis (EDA), predictive modeling, visualization dashboards, and our paper.
 
 ## Data Sources
 
